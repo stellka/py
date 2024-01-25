@@ -1,15 +1,13 @@
-from flask import Flask
+from payment import calculate as cal
 
-app = Flask(__name__)
+def test(a,b):
+    c = cal(a,b)
 
-def calculate (a, b):
-    c = a+b
-    return c
+    test_c = a+b
 
-@app.route("/")
-def index():
+    assert c == test_c
 
-    return "This is a payment page! Please pay %s USD"%(calculate(10, 20))
 
-if __name__== "__main__":
-    app.run(host="127.0.0.1", port=8080, debug=True)
+test(10,20)
+test(1,15)
+test(40,150)
